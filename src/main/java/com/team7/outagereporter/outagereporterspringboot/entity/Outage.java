@@ -3,9 +3,10 @@ package com.team7.outagereporter.outagereporterspringboot.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Outage {
+public class Outage{
 
     @Id
     @GeneratedValue
@@ -16,6 +17,9 @@ public class Outage {
     private String zipCode;
     private String email;
     private String comment;
+
+    @ManyToOne
+    private Utility utility;
 
     public Outage() {}
 
@@ -82,6 +86,13 @@ public class Outage {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setUtility(Utility utility){
+        this.utility = utility;
+    }
+    public Utility getUtility(){
+        return utility;
     }
 
     @Override

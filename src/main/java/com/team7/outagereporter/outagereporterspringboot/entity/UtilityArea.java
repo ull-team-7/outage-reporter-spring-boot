@@ -18,7 +18,7 @@ public class UtilityArea {
     @GeneratedValue
     private int zipCode;
 
-    private int timeToFix;
+    private int fixTime;
     private String comment;
 
     public void setUtilityId(Utility utilityId){
@@ -27,8 +27,8 @@ public class UtilityArea {
     public void setZipCode(int zipCode){
         this.zipCode = zipCode;
     }
-    public void setTimeToFix(int timeToFix){
-        this.timeToFix = timeToFix;
+    public void setTimeToFix(int fixTime){
+        this.fixTime = fixTime;
     }
     public void setComment(String comment){
         this.comment = comment;
@@ -40,7 +40,7 @@ public class UtilityArea {
         return zipCode;
     }
     public int getTimeToFix(){
-        return timeToFix;
+        return fixTime;
     }
     public String getComment(){
         return comment;
@@ -51,7 +51,7 @@ public class UtilityArea {
         return "UtilityArea{" +
                 "UtilityId = " + utilityId + '\'' +
                 "ZipCode = " + zipCode + '\'' +
-                "Time to fix = " + timeToFix + '\'' +
+                "Time to fix = " + fixTime + '\'' +
                 "Comment = " + comment + '\'' +
                 '}';
     }

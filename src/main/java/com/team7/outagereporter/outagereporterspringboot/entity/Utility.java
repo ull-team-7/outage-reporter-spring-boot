@@ -9,6 +9,7 @@ public class Utility {
     @Id
     @GeneratedValue
     private long utilityId;
+
     private String email;
     private String website;
 

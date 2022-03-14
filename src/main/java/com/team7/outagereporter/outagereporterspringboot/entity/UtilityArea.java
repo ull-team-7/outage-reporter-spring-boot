@@ -2,16 +2,14 @@ package com.team7.outagereporter.outagereporterspringboot.entity;
 
 import jdk.jshell.execution.Util;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class UtilityArea {
+public class UtilityArea implements Serializable {
     @Id
     @GeneratedValue
-    @OneToMany
+    @ManyToOne
     private Utility utilityId;
 
     @Id

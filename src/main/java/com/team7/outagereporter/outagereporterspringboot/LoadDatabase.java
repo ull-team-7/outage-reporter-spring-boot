@@ -1,3 +1,4 @@
+
 package com.team7.outagereporter.outagereporterspringboot;
 
 import com.team7.outagereporter.outagereporterspringboot.entity.Outage;

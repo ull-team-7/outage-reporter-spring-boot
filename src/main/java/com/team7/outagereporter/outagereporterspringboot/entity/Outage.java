@@ -1,15 +1,12 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Outage{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
@@ -17,6 +14,7 @@ public class Outage{
     private String zipCode;
     private String email;
     private String comment;
+
 
     @ManyToOne
     private Utility utility;
@@ -30,6 +28,7 @@ public class Outage{
         this.zipCode = zipCode;
         this.email = email;
         this.comment = comment;
+
     }
 
     public void setId(Long id) {
@@ -87,6 +86,8 @@ public class Outage{
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public String getNoAnswer(){ return "Needs to be filled";}
 
     public void setUtility(Utility utility){
         this.utility = utility;

@@ -1,3 +1,5 @@
+/*
+
 package com.team7.outagereporter.outagereporterspringboot.controller;
 
 import com.team7.outagereporter.outagereporterspringboot.exception.OutageNotFoundException;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/outages")
 public class OutageController {
 
     private final OutageRepository repository;
@@ -17,23 +20,23 @@ public class OutageController {
         this.repository = repository;
     }
 
-    @GetMapping("/outages")
+    @GetMapping("/all")
     List<Outage> all() {
         return repository.findAll();
     }
 
-    @PostMapping("/outages")
+    @PostMapping("/add")
     Outage newOutage(@RequestBody Outage outage) {
         return repository.save(outage);
     }
 
-    @GetMapping("/outages/{id}")
+    @GetMapping("/find/{id}")
     Outage one(@PathVariable Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new OutageNotFoundException(id));
     }
 
-    @PutMapping("/outages/{id}")
+    @PutMapping("/update/{id}")
     Outage replaceOutage(@RequestBody Outage newOutage, @PathVariable Long id) {
         return repository.findById(id)
                 .map(outage -> {
@@ -50,8 +53,9 @@ public class OutageController {
                 });
     }
 
-    @DeleteMapping("/outages/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteOutage(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }
+*/

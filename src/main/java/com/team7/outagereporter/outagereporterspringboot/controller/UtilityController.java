@@ -37,8 +37,11 @@ public class UtilityController {
     Utility replaceUtility(@RequestBody Utility newUtility, @PathVariable Long id) {
         return repository.findById(id)
                 .map(utility -> {
+                    if(newUtility.getName() == null){newUtility.setName(utility.getName());}
                     utility.setName(newUtility.getName());
+                    if(newUtility.getEmail() == null){newUtility.setEmail(utility.getEmail());}
                     utility.setEmail(newUtility.getEmail());
+                    if(newUtility.getWebsite() == null){newUtility.setWebsite(utility.getWebsite());}
                     utility.setWebsite(newUtility.getWebsite());
                     return repository.save(utility);
                 }).orElseGet(() -> {

@@ -1,43 +1,63 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
-import jdk.jshell.execution.Util;
+import com.team7.outagereporter.outagereporterspringboot.service.UtilityService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="utility_area")
 public class UtilityArea implements Serializable {
-    @Id
-    @GeneratedValue
+
+//    @Transient
+//    @Autowired
+//    private UtilityService utilityService;
+
+    @Embeddable
+    public static class Pk implements Serializable {
+        private String zipCode;
+        private Long utilityId;
+    }
+
+    @EmbeddedId
+    private Pk id;
+
     @ManyToOne
-    private Utility utilityId;
+    @JoinColumn(name = "utility_id", nullable = false)
+    private Utility utility;
 
-    @Id
-    @GeneratedValue
-    private int zipCode;
-
-    private int fixTime;
+    private String fixTime;
     private String comment;
 
-    public void setUtilityId(Utility utilityId){
-        this.utilityId = utilityId;
-    }
-    public void setZipCode(int zipCode){
-        this.zipCode = zipCode;
-    }
-    public void setTimeToFix(int fixTime){
+    public UtilityArea() {}
+
+//    public UtilityArea(String zipCode, Utility utility, String fixTime, String comment) {
+//        this.zipCode = zipCode;
+//        this.utility = utility;
+//        this.fixTime = fixTime;
+//        this.comment = comment;
+//    }
+
+//    public void setZipCode(String zipCode){
+//        this.zipCode = zipCode;
+//    }
+//    public void setUtility(Utility utility){
+//        this.utility = utility;
+//    }
+    public void setTimeToFix(String fixTime){
         this.fixTime = fixTime;
     }
     public void setComment(String comment){
         this.comment = comment;
     }
-    public Utility getUtilityId(){
-        return utilityId;
+//    public String getZipCode(){
+//        return zipCode;
+//    }
+    public Utility getUtility(){
+        return utility;
     }
-    public int getZipCode(){
-        return zipCode;
-    }
-    public int getTimeToFix(){
+    public String getTimeToFix(){
         return fixTime;
     }
     public String getComment(){
@@ -46,11 +66,12 @@ public class UtilityArea implements Serializable {
 
     @Override
     public String toString(){
-        return "UtilityArea{" +
-                "UtilityId = " + utilityId + '\'' +
-                "ZipCode = " + zipCode + '\'' +
-                "Time to fix = " + fixTime + '\'' +
-                "Comment = " + comment + '\'' +
-                '}';
+        return "";
+//        return "UtilityArea{" +
+//                "UtilityId = " + utility + '\'' +
+//                "ZipCode = " + zipCode + '\'' +
+//                "Time to fix = " + fixTime + '\'' +
+//                "Comment = " + comment + '\'' +
+//                '}';
     }
 }

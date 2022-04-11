@@ -4,7 +4,7 @@ import com.team7.outagereporter.outagereporterspringboot.entity.UtilityArea;
 
 public class UtilityAreaNotFoundException extends RuntimeException {
 
-    public UtilityAreaNotFoundException(UtilityArea.Pk id) {
+    public UtilityAreaNotFoundException(String id) {
         super("Could not find utility area " + id);
     }
 }

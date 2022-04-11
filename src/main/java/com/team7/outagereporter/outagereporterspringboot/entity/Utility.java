@@ -1,6 +1,9 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,8 +15,9 @@ public class Utility {
     @Column(name = "utility_id")
     private Long utilityId;
 
-    @OneToMany(mappedBy = "utility")
-    private Set<UtilityArea> utilityAreas;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "utility_id", referencedColumnName = "utility_id", nullable = false)
+    private Set<UtilityArea> utilityAreas = new HashSet<>();
 
     private String name;
     private String email;
@@ -34,50 +38,42 @@ public class Utility {
         this.website = website;
     }
 
-    public void setUtilityId(long utilityId){
-        this.utilityId = utilityId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUtilityAreas(Set<UtilityArea> utilityAreas) {
-        this.utilityAreas = utilityAreas;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public void setWebsite(String website){
-        this.website = website;
-    }
-
     public Long getUtilityId(){
         return utilityId;
     }
-
+    public Set<UtilityArea> getUtilityAreas() {
+        return utilityAreas;
+    }
     public String getName() {
         return name;
     }
-
-    public Set<UtilityArea> getUtilityArea(Set<UtilityArea> utilityArea) {
-        return this.utilityAreas = utilityArea;
-    }
-
     public String getEmail(){
         return email;
     }
-
     public String getWebsite(){
         return website;
+    }
+    public void setUtilityId(long utilityId){
+        this.utilityId = utilityId;
+    }
+    public void setUtilityAreas(Set<UtilityArea> utilityAreas) {
+        this.utilityAreas = utilityAreas;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public void setWebsite(String website){
+        this.website = website;
     }
 
     @Override
     public String toString(){
         return "Utility{" +
                 "utilityId=" + utilityId +
+                ", utilityAreas='" + utilityAreas + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", website='" + website + '\'' +

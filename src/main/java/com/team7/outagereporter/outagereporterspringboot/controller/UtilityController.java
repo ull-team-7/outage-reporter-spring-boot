@@ -1,11 +1,14 @@
 package com.team7.outagereporter.outagereporterspringboot.controller;
 
 import com.team7.outagereporter.outagereporterspringboot.entity.Utility;
+import com.team7.outagereporter.outagereporterspringboot.entity.UtilityArea;
+import com.team7.outagereporter.outagereporterspringboot.exception.UtilityAreaNotFoundException;
 import com.team7.outagereporter.outagereporterspringboot.exception.UtilityNotFoundException;
 import com.team7.outagereporter.outagereporterspringboot.repository.UtilityRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

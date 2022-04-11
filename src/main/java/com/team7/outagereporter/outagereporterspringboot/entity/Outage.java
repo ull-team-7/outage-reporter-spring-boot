@@ -3,8 +3,10 @@ package com.team7.outagereporter.outagereporterspringboot.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Outages")
 public class Outage {
 
     @Id

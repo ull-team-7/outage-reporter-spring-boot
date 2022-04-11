@@ -2,7 +2,9 @@ package com.team7.outagereporter.outagereporterspringboot;
 
 import com.team7.outagereporter.outagereporterspringboot.entity.Outage;
 import com.team7.outagereporter.outagereporterspringboot.entity.Utility;
+import com.team7.outagereporter.outagereporterspringboot.entity.UtilityArea;
 import com.team7.outagereporter.outagereporterspringboot.repository.OutageRepository;
+import com.team7.outagereporter.outagereporterspringboot.repository.UtilityAreaRepository;
 import com.team7.outagereporter.outagereporterspringboot.repository.UtilityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,14 @@ public class LoadDatabase {
         return args -> {
             log.info("Preloading " + repository.save(new Utility("Slemco", "slemcosupport@slemco.com", "https://www.slemco.com")));
             log.info("Preloading " + repository.save(new Utility("Entergy", "entergysupport@entergy.com", "https://www.entergy.com")));
+        };
+    }
+
+    @Bean
+    CommandLineRunner initDatabaseUtilityArea(UtilityAreaRepository utilityAreaRepository){
+        return args -> {
+            log.info("Preloading " + utilityAreaRepository.save(new UtilityArea(10101,10,"Its gonna get fixed")));
+            log.info("Preloading " + utilityAreaRepository.save(new UtilityArea(12121,2,"Its gonna get fixed")));
         };
     }
 

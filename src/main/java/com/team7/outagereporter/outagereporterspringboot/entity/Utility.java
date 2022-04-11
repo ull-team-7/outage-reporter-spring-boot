@@ -1,15 +1,17 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Utility {
 
     @Id
-    @GeneratedValue(generator = "utility_seq")
-    private Long utilityId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "utilityArea_id",referencedColumnName = "id")
+    private UtilityArea utilityArea;
 
     private String name;
     private String email;
@@ -23,8 +25,8 @@ public class Utility {
         this.website = website;
     }
 
-    public void setUtilityId(long utilityId){
-        this.utilityId = utilityId;
+    public void setUtilityId(long id){
+        this.id = id;
     }
     public void setName(String name) {
         this.name = name;
@@ -36,7 +38,7 @@ public class Utility {
         this.website = website;
     }
     public Long getUtilityId(){
-        return utilityId;
+        return id;
     }
     public String getName() {
         return name;
@@ -51,10 +53,18 @@ public class Utility {
     @Override
     public String toString(){
         return "Utility{" +
-                "utilityId=" + utilityId +
+                "utilityId=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", website='" + website + '\'' +
                 '}';
+    }
+
+    public UtilityArea getUtilityArea() {
+        return utilityArea;
+    }
+
+    public void assignUtilityArea(UtilityArea utilityArea) {
+        this.utilityArea = utilityArea;
     }
 }

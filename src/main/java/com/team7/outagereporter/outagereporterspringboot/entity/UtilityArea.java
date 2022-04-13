@@ -28,7 +28,7 @@ public class UtilityArea implements Serializable {
     public Boolean getOutageStatus() {
         return outageStatus;
     }
-    public String getTimeToFix(){
+    public String getFixTime(){
         return fixTime;
     }
     public String getComment(){
@@ -40,7 +40,7 @@ public class UtilityArea implements Serializable {
     public void setOutageStatus(Boolean outageStatus) {
         this.outageStatus = outageStatus;
     }
-    public void setTimeToFix(String fixTime){
+    public void setFixTime(String fixTime){
         this.fixTime = fixTime;
     }
     public void setComment(String comment){
@@ -52,7 +52,7 @@ public class UtilityArea implements Serializable {
         return "UtilityArea{" +
                 "zipCode=" + zipCode +
                 ", outageStatus=" + outageStatus +
-                ", timeToFix=" + fixTime +
+                ", fixTime=" + fixTime +
                 ", comment=" + comment +
                 '}';
     }

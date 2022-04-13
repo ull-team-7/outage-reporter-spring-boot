@@ -56,7 +56,7 @@ public class UtilityAreaController {
                 .orElseThrow(() -> new UtilityAreaNotFoundException(zipCode));
 
         utilityArea.setOutageStatus(newUtilityArea.getOutageStatus());
-        utilityArea.setTimeToFix(newUtilityArea.getTimeToFix());
+        utilityArea.setFixTime(newUtilityArea.getFixTime());
         utilityArea.setComment(newUtilityArea.getComment());
 
         return repository.save(utility);

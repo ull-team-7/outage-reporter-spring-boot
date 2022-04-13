@@ -2,6 +2,7 @@ package com.team7.outagereporter.outagereporterspringboot;
 
 import com.team7.outagereporter.outagereporterspringboot.entity.Outage;
 import com.team7.outagereporter.outagereporterspringboot.entity.Utility;
+import com.team7.outagereporter.outagereporterspringboot.entity.UtilityArea;
 import com.team7.outagereporter.outagereporterspringboot.repository.OutageRepository;
 import com.team7.outagereporter.outagereporterspringboot.repository.UtilityRepository;
 import org.slf4j.Logger;
@@ -26,8 +27,15 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabaseUtility(UtilityRepository repository) {
         return args -> {
-            log.info("Preloading " + repository.save(new Utility("Slemco", "slemcosupport@slemco.com", "https://www.slemco.com")));
-            log.info("Preloading " + repository.save(new Utility("Entergy", "entergysupport@entergy.com", "https://www.entergy.com")));
+            Utility a = new Utility("Slemco", "slemcosupport@slemco.com", "https://www.slemco.com");
+            Utility b = new Utility("Entergy", "entergysupport@entergy.com", "https://www.entergy.com");
+            log.info("Preloading " + repository.save(a));
+            log.info("Preloading " + repository.save(b));
+            Utility x = repository.findById(1L).get();
+            x.getUtilityAreas().add(new UtilityArea("70555", true, "1 hour", "Sorry for any inconvenience."));
+            x.getUtilityAreas().add(new UtilityArea("70506", true, "30 minutes", "It'll be fixed shortly."));
+            x.getUtilityAreas().add(new UtilityArea("70123", false, null, null));
+            log.info("Updating " + repository.save(x));
         };
     }
 

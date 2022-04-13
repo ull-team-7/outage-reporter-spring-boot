@@ -1,56 +1,59 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
-import jdk.jshell.execution.Util;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="utility_area")
 public class UtilityArea implements Serializable {
-    @Id
-    @GeneratedValue
-    @ManyToOne
-    private Utility utilityId;
 
     @Id
-    @GeneratedValue
-    private int zipCode;
-
-    private int fixTime;
+    private String zipCode;
+    private Boolean outageStatus;
+    private String fixTime;
     private String comment;
 
-    public void setUtilityId(Utility utilityId){
-        this.utilityId = utilityId;
-    }
-    public void setZipCode(int zipCode){
+    public UtilityArea() {}
+
+    public UtilityArea(String zipCode, Boolean outageStatus, String fixTime, String comment) {
         this.zipCode = zipCode;
-    }
-    public void setTimeToFix(int fixTime){
+        this.outageStatus = outageStatus;
         this.fixTime = fixTime;
-    }
-    public void setComment(String comment){
         this.comment = comment;
     }
-    public Utility getUtilityId(){
-        return utilityId;
-    }
-    public int getZipCode(){
+
+    public String getZipCode() {
         return zipCode;
     }
-    public int getTimeToFix(){
+    public Boolean getOutageStatus() {
+        return outageStatus;
+    }
+    public String getFixTime(){
         return fixTime;
     }
     public String getComment(){
         return comment;
     }
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+    public void setOutageStatus(Boolean outageStatus) {
+        this.outageStatus = outageStatus;
+    }
+    public void setFixTime(String fixTime){
+        this.fixTime = fixTime;
+    }
+    public void setComment(String comment){
+        this.comment = comment;
+    }
 
     @Override
     public String toString(){
         return "UtilityArea{" +
-                "UtilityId = " + utilityId + '\'' +
-                "ZipCode = " + zipCode + '\'' +
-                "Time to fix = " + fixTime + '\'' +
-                "Comment = " + comment + '\'' +
+                "zipCode=" + zipCode +
+                ", outageStatus=" + outageStatus +
+                ", fixTime=" + fixTime +
+                ", comment=" + comment +
                 '}';
     }
 }

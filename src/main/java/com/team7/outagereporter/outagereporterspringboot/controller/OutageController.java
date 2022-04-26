@@ -37,6 +37,7 @@ public class OutageController {
     Outage replaceOutage(@RequestBody Outage newOutage, @PathVariable Long id) {
         return repository.findById(id)
                 .map(outage -> {
+                    outage.setUtility(newOutage.getUtility());
                     if(newOutage.getFirstName() == null){ newOutage.setFirstName(outage.getFirstName());}
                     outage.setFirstName(newOutage.getFirstName());
                     if(newOutage.getLastName() == null){ newOutage.setLastName(outage.getLastName());}

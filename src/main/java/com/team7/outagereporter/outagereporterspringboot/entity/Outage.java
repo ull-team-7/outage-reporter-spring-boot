@@ -1,15 +1,18 @@
 package com.team7.outagereporter.outagereporterspringboot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="outage")
 public class Outage {
 
     @Id
     @GeneratedValue(generator = "Outage_seq")
     private Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "utility_id", referencedColumnName = "utility_id")
+    private Utility utility;
 
     private String firstName;
     private String lastName;
@@ -34,6 +37,12 @@ public class Outage {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public Utility getUtility() {
+        return utility;
+    }
+    public void setUtility(Utility utility) {
+        this.utility = utility;
     }
     public String getFirstName() {
         return firstName;
@@ -76,6 +85,7 @@ public class Outage {
     public String toString() {
         return "Outage{" +
                 "id=" + id +
+                ", utility='" + utility + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", streetAddress='" + streetAddress + '\'' +

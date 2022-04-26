@@ -31,9 +31,9 @@ public class Utility {
         this.website = website;
     }
 
-    public Utility(String name, Set<UtilityArea> utilityAreas, String email, String website) {
-        this.name = name;
+    public Utility(Set<UtilityArea> utilityAreas, String name, String email, String website) {
         this.utilityAreas = utilityAreas;
+        this.name = name;
         this.email = email;
         this.website = website;
     }

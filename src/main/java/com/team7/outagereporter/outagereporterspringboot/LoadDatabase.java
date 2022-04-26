@@ -30,11 +30,19 @@ public class LoadDatabase {
             log.info("Preloading " + utilityRepository.save(utility1));
             log.info("Preloading " + utilityRepository.save(utility2));
 
-            Utility x = utilityRepository.findById(1L).get();
-            x.getUtilityAreas().add(new UtilityArea("70555", true, "1 hour", "Sorry for any inconvenience."));
-            x.getUtilityAreas().add(new UtilityArea("70506", true, "30 minutes", "It'll be fixed shortly."));
-            x.getUtilityAreas().add(new UtilityArea("70123", false, null, null));
-            log.info("Updating " + utilityRepository.save(x));
+            Utility x1 = utilityRepository.findById(1L).get();
+            x1.getUtilityAreas().add(new UtilityArea("70555", true, "1 hour", "Sorry for any inconvenience."));
+            x1.getUtilityAreas().add(new UtilityArea("70506", true, "30 minutes", "It'll be fixed shortly."));
+            x1.getUtilityAreas().add(new UtilityArea("70123", false, null, null));
+            log.info("Updating " + utilityRepository.save(x1));
+
+            Utility x2 = utilityRepository.findById(1L).get();
+            outage1 = outageRepository.findById(1L).get();
+            outage2 = outageRepository.findById(2L).get();
+            outage1.setUtility(x2);
+            outage2.setUtility(x2);
+            log.info("Updating " + outageRepository.save(outage1));
+            log.info("Updating " + outageRepository.save(outage2));
         };
     }
 

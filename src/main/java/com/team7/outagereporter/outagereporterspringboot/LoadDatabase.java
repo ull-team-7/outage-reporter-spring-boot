@@ -43,6 +43,7 @@ public class LoadDatabase {
             outage2.setUtility(x2);
             log.info("Updating " + outageRepository.save(outage1));
             log.info("Updating " + outageRepository.save(outage2));
+
         };
     }
 

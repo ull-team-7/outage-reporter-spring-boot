@@ -10,7 +10,7 @@ public class Outage {
     @GeneratedValue(generator = "Outage_seq")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "utility_id", referencedColumnName = "utility_id")
     private Utility utility;
 
@@ -23,13 +23,14 @@ public class Outage {
 
     public Outage() {}
 
-    public Outage(String firstName, String lastName, String streetAddress, String zipCode, String email, String comment) {
+    public Outage(String firstName, String lastName, String streetAddress, String zipCode, String email, String comment, Utility utility) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.streetAddress = streetAddress;
         this.zipCode = zipCode;
         this.email = email;
         this.comment = comment;
+        this.utility = utility;
     }
 
     public Long getId() {

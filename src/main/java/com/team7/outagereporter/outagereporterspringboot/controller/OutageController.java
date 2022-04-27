@@ -3,12 +3,13 @@ package com.team7.outagereporter.outagereporterspringboot.controller;
 import com.team7.outagereporter.outagereporterspringboot.exception.OutageNotFoundException;
 import com.team7.outagereporter.outagereporterspringboot.entity.Outage;
 import com.team7.outagereporter.outagereporterspringboot.repository.OutageRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "${origins}")
 public class OutageController {
 
     private final OutageRepository repository;

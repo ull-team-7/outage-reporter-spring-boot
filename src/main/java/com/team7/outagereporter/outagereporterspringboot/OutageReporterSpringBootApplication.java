@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class OutageReporterSpringBootApplication {
 
 	public static void main(String[] args) {
+		for(String arg:args) {
+			System.out.println(arg);
+		}
 		SpringApplication.run(OutageReporterSpringBootApplication.class, args);
 	}
 

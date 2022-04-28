@@ -15,7 +15,6 @@ public class Utility {
     @Column(name = "utility_id")
     private Long utilityId;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "utility_id", referencedColumnName = "utility_id", nullable = false)
     private Set<UtilityArea> utilityAreas = new HashSet<>();
